@@ -216,7 +216,6 @@ fragment ESCAPE : '\\' 'a'
 				| '\\' OCT OCT OCT
 				| '\\' ('x' | 'X') HEX
 				| '\\' ('x' | 'X') HEX HEX
-				| '\\' ('x' | 'X') HEX HEX HEX
 				;
 
 ID : ([$_] | ALPHA) (DIGIT | ALPHA | [$_])*

@@ -7,7 +7,7 @@ import java.math.*;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 
-import tube.ast.AbstractSyntaxTree;
+import tube.ast.Program;
 import tube.syntactic.*;
 
 public class Main {
@@ -33,10 +33,14 @@ public class Main {
 
 		GrammarParser parser = new GrammarParser(tokens);
 
-		output = new PrintWriter(new FileOutputStream(fileName.replace(".c", ".ast")));
+		output = new PrintWriter(new FileOutputStream(fileName.replace(".c", ".pt")));
 		ParseTree tree = parser.program();
 		output.println(tree.toStringTree(parser));
-		AbstractSyntaxTree ast = new AbstractSyntaxTree(parser);
+		output.close();
+
+		output = new PrintWriter(new FileOutputStream(fileName.replace(".c", ".ast")));
+		Program prog = new Program(parser);
+		output.println(prog);
 		output.close();
 	}
 }
